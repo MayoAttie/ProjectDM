@@ -1,0 +1,261 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|c:\\programming\\unitygame\\projectdm\\projectdm\\assets\\01_scripts\\global\\savesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\global\\savesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\datastructure\\itemdefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\datastructure\\itemdefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\pool\\ipoolable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\pool\\ipoolable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\global\\patterns\\monosingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\global\\patterns\\monosingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\global\\patterns\\datasingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\global\\patterns\\datasingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\global\\patterns\\idatasingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\global\\patterns\\idatasingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\global\\definitions\\epooledobjecttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\global\\definitions\\epooledobjecttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\datastructure\\playersavedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\datastructure\\playersavedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\pool\\poolingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\pool\\poolingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\datastructure\\basedatascript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\datastructure\\basedatascript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\pool\\poolingutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\pool\\poolingutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\pool\\poolingmonobehaviourextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\pool\\poolingmonobehaviourextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\pool\\ipoolextras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\pool\\ipoolextras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\pool\\ipool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\pool\\ipool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\assets\\01_scripts\\objects\\monobehaviourextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27E04ABD-4DD0-D770-258C-D19780FE778E}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\objects\\monobehaviourextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SaveSystem.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\SaveSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Global\\SaveSystem.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\SaveSystem.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Global\\SaveSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T07:45:53.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IDataSingleton.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\Patterns\\IDataSingleton.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Global\\Patterns\\IDataSingleton.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\Patterns\\IDataSingleton.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Global\\Patterns\\IDataSingleton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T07:44:32.677Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PlayerSaveData.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\DataStructure\\PlayerSaveData.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\DataStructure\\PlayerSaveData.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\DataStructure\\PlayerSaveData.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\DataStructure\\PlayerSaveData.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAgwCwAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T07:15:37.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EPooledObjectType.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\Definitions\\EPooledObjectType.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Global\\Definitions\\EPooledObjectType.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\Definitions\\EPooledObjectType.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Global\\Definitions\\EPooledObjectType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T15:28:45.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PoolingManager.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\PoolingManager.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Pool\\PoolingManager.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\PoolingManager.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Pool\\PoolingManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T15:02:58.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MonoSingleton.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\Patterns\\MonoSingleton.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Global\\Patterns\\MonoSingleton.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\Patterns\\MonoSingleton.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Global\\Patterns\\MonoSingleton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T16:02:57.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ItemDefinition.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\DataStructure\\ItemDefinition.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\DataStructure\\ItemDefinition.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\DataStructure\\ItemDefinition.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\DataStructure\\ItemDefinition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T07:35:15.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DataSingleton.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\Patterns\\DataSingleton.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Global\\Patterns\\DataSingleton.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Global\\Patterns\\DataSingleton.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Global\\Patterns\\DataSingleton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T16:03:11.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IPoolable.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\IPoolable.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Pool\\IPoolable.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\IPoolable.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Pool\\IPoolable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T14:33:30.437Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PoolingUtil.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\PoolingUtil.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Pool\\PoolingUtil.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\PoolingUtil.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Pool\\PoolingUtil.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T15:57:19.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PoolingMonoBehaviourExtension.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\PoolingMonoBehaviourExtension.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Pool\\PoolingMonoBehaviourExtension.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\PoolingMonoBehaviourExtension.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Pool\\PoolingMonoBehaviourExtension.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwAQAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T14:33:17.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BaseDataScript.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\DataStructure\\BaseDataScript.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\DataStructure\\BaseDataScript.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\DataStructure\\BaseDataScript.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\DataStructure\\BaseDataScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T07:20:24.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IPoolExtras.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\IPoolExtras.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Pool\\IPoolExtras.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\IPoolExtras.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Pool\\IPoolExtras.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T15:43:40.494Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IPool.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\IPool.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Pool\\IPool.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Pool\\IPool.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Pool\\IPool.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T14:35:56.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MonoBehaviourExtension.cs",
+              "DocumentMoniker": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Objects\\MonoBehaviourExtension.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Objects\\MonoBehaviourExtension.cs",
+              "ToolTip": "C:\\programming\\UnityGame\\ProjectDM\\ProjectDM\\Assets\\01_Scripts\\Objects\\MonoBehaviourExtension.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Objects\\MonoBehaviourExtension.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-20T07:12:16.246Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
