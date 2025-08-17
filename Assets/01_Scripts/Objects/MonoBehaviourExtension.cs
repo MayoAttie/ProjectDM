@@ -1,6 +1,7 @@
 using NUnit.Framework.Constraints;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "MonoBehaviourExtension", menuName = "Object/MonoBehaviourExtension", order = 2)]
 public class MonoBehaviourExtension : MonoBehaviour
 {
     protected int nMonoObjectID;

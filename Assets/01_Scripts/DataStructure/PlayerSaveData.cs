@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static ESceneType;
 
 
 [Serializable]
@@ -31,7 +32,7 @@ public class PlayerStatsData : BaseDataScript
 [Serializable]
 public class WorldProgressData : BaseDataScript
 {
-    public string CurrentScene;                 // 현재 위치한 씬 이름
+    public E_SceneType CurrentScene;                 // 현재 위치한 씬 이름
     public Vector2 PlayerPosition;              // 플레이어 현재 좌표
     public List<string> VisitedRooms = new();   // 방문한 방/구역 ID 목록
     public string LastCheckpointId;             // 마지막으로 도달한 체크포인트 ID

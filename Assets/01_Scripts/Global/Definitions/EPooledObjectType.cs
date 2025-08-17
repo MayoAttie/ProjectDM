@@ -1,7 +1,7 @@
 
 public class EPooledObjectType
 {
-    public enum Type
+    public enum E_PoolType
     {
         None = 0,
         Player,
