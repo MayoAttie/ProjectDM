@@ -8,8 +8,6 @@ public class GameData : MonoSingleton<GameData>
 
     protected override void Awake()
     {
-        base.Awake();
-        LoadOrInitialize();
     }
 
     public async UniTask InitializeAsync()
@@ -33,27 +31,14 @@ public class GameData : MonoSingleton<GameData>
 
         // 정의 매핑 (아이템/능력 등)
         ResolveDefinitions();
+
+        // InputManager 키 바인딩 새로고침
+        InputManager.RefreshKeyBindings();
+
         await UniTask.Yield();
     }
 
 
-    /// <summary>
-    /// 저장 데이터가 있으면 불러오고, 없으면 새로 생성
-    /// </summary>
-    private void LoadOrInitialize()
-    {
-        var loaded = SaveSystem.Load();
-        if (loaded != null)
-        {
-            SaveData = loaded;
-            DebugLog.Log("[GameData] 저장 데이터를 불러왔습니다.");
-        }
-        else
-        {
-            SaveData = CreateNewSaveData();
-            DebugLog.Log("[GameData] 새로운 저장 데이터를 생성했습니다.");
-        }
-    }
 
     void ResolveDefinitions()
     {
@@ -109,6 +94,7 @@ public class GameData : MonoSingleton<GameData>
             Quests = new QuestData(),
             Unlocks = new SystemUnlockData(),
             Inventory = new InventoryData(),
+            InputSettings = new InputSettingsData(),
             TotalPlayTime = 0,
             SaveVersion = 1
         };

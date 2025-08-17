@@ -70,19 +70,19 @@ public static class InputManager
     // 입력 체크 메서드들
     public static bool IsKeyPressed(InputType inputType)
     {
-        KeyCode key = GetKeyBinding(inputType);
+        KeyCode key = GetKeyBindingSafe(inputType);
         return key != KeyCode.None && Input.GetKeyDown(key);
     }
 
     public static bool IsKeyHeld(InputType inputType)
     {
-        KeyCode key = GetKeyBinding(inputType);
+        KeyCode key = GetKeyBindingSafe(inputType);
         return key != KeyCode.None && Input.GetKey(key);
     }
 
     public static bool IsKeyReleased(InputType inputType)
     {
-        KeyCode key = GetKeyBinding(inputType);
+        KeyCode key = GetKeyBindingSafe(inputType);
         return key != KeyCode.None && Input.GetKeyUp(key);
     }
 
@@ -112,30 +112,64 @@ public static class InputManager
         return InputType.None;
     }
 
-    // 키 설정 저장
+    // 키 설정 저장 (Save System 사용)
     public static void SaveKeyBindings()
     {
+        if (GameData.Instance?.SaveData?.InputSettings == null)
+        {
+            DebugLog.Warning("[InputManager] GameData 또는 InputSettings가 초기화되지 않았습니다.");
+            return;
+        }
+
+        // 현재 키 바인딩을 문자열로 변환하여 저장
+        GameData.Instance.SaveData.InputSettings.KeyBindings.Clear();
         foreach (var binding in currentKeyBindings)
         {
-            PlayerPrefs.SetString($"KeyBinding_{binding.Key}", binding.Value.ToString());
+            GameData.Instance.SaveData.InputSettings.KeyBindings[binding.Key.ToString()] = binding.Value.ToString();
         }
-        PlayerPrefs.Save();
+
+        // Save System을 통해 저장
+        GameData.Instance.Save();
+        DebugLog.Log("[InputManager] 키 설정이 저장되었습니다.");
     }
 
-    // 키 설정 로드
+    // 키 설정 로드 (Save System 사용)
     public static void LoadKeyBindings()
     {
         currentKeyBindings = new Dictionary<InputType, KeyCode>();
 
+        // GameData가 초기화되지 않은 경우 기본값 사용
+        if (GameData.Instance?.SaveData?.InputSettings == null)
+        {
+            DebugLog.Warning("[InputManager] GameData가 초기화되지 않아 기본 키 설정을 사용합니다.");
+            foreach (var defaultBinding in defaultKeyBindings)
+            {
+                currentKeyBindings[defaultBinding.Key] = defaultBinding.Value;
+            }
+            return;
+        }
+
+        // 저장된 키 바인딩 로드
         foreach (var defaultBinding in defaultKeyBindings)
         {
-            string savedKey = PlayerPrefs.GetString($"KeyBinding_{defaultBinding.Key}", defaultBinding.Value.ToString());
-            if (System.Enum.TryParse(savedKey, out KeyCode keyCode))
+            string inputTypeKey = defaultBinding.Key.ToString();
+            
+            if (GameData.Instance.SaveData.InputSettings.KeyBindings.ContainsKey(inputTypeKey))
             {
-                currentKeyBindings[defaultBinding.Key] = keyCode;
+                string savedKeyCode = GameData.Instance.SaveData.InputSettings.KeyBindings[inputTypeKey];
+                if (System.Enum.TryParse(savedKeyCode, out KeyCode keyCode))
+                {
+                    currentKeyBindings[defaultBinding.Key] = keyCode;
+                }
+                else
+                {
+                    DebugLog.Warning($"[InputManager] 잘못된 키 코드: {savedKeyCode}, 기본값 사용");
+                    currentKeyBindings[defaultBinding.Key] = defaultBinding.Value;
+                }
             }
             else
             {
+                // 저장된 설정이 없으면 기본값 사용
                 currentKeyBindings[defaultBinding.Key] = defaultBinding.Value;
             }
         }
@@ -150,7 +184,7 @@ public static class InputManager
             currentKeyBindings[defaultBinding.Key] = defaultBinding.Value;
         }
         SaveKeyBindings();
-        Debug.Log("키 설정이 기본값으로 초기화되었습니다.");
+        DebugLog.Log("키 설정이 기본값으로 초기화되었습니다.");
     }
 
     // 모든 키 바인딩 가져오기 (UI에서 사용)
@@ -179,5 +213,28 @@ public static class InputManager
             case InputType.Special_1: return "특수키";
             default: return inputType.ToString();
         }
+    }
+
+    // GameData가 초기화된 후 키 바인딩을 다시 로드하는 메서드
+    public static void RefreshKeyBindings()
+    {
+        LoadKeyBindings();
+    }
+
+    // InputManager가 제대로 초기화되었는지 확인
+    public static bool IsInitialized()
+    {
+        return currentKeyBindings != null && currentKeyBindings.Count > 0;
+    }
+
+    // 안전한 키 바인딩 가져오기 (초기화되지 않은 경우 기본값 반환)
+    public static KeyCode GetKeyBindingSafe(InputType inputType)
+    {
+        if (!IsInitialized())
+        {
+            DebugLog.Warning("[InputManager] InputManager가 초기화되지 않았습니다. 기본값을 반환합니다.");
+            return defaultKeyBindings.ContainsKey(inputType) ? defaultKeyBindings[inputType] : KeyCode.None;
+        }
+        return GetKeyBinding(inputType);
     }
 }

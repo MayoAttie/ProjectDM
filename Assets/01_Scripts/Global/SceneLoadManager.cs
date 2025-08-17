@@ -27,6 +27,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
         { E_SceneType.LOADING,   "Scene_Loading"   },
         { E_SceneType.LOBBY,     "Scene_Lobby"     },
         { E_SceneType.MAIN_GAME, "Scene_MainGame"  },
+        { E_SceneType.START,     "Scene_Start"  },
     };
 
     /// <summary>
@@ -37,6 +38,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
         { "Scene_Loading",   E_SceneType.LOADING   },
         { "Scene_Lobby",     E_SceneType.LOBBY     },
         { "Scene_MainGame",  E_SceneType.MAIN_GAME },
+        { "Scene_Start",     E_SceneType.START },
     };
 
     // ------------------------------

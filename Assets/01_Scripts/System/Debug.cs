@@ -24,28 +24,28 @@ namespace Project.Utility
         public static void Log(string message, Object context = null)
         {
             if (CurrentLogLevel <= LogLevel.Verbose)
-                DebugLog.Log(message, context);
+                Debug.Log(message, context);
         }
 
         [System.Diagnostics.Conditional("UNITY_EDITOR")]
         public static void Info(string message, Object context = null)
         {
             if (CurrentLogLevel <= LogLevel.Info)
-                DebugLog.Log($"<color=cyan>[INFO]</color> {message}", context);
+                Debug.Log($"<color=cyan>[INFO]</color> {message}", context);
         }
 
         [System.Diagnostics.Conditional("UNITY_EDITOR")]
         public static void Warning(string message, Object context = null)
         {
             if (CurrentLogLevel <= LogLevel.Warning)
-                DebugLog.Warning($"<color=yellow>[WARN]</color> {message}", context);
+                Debug.LogWarning($"<color=yellow>[WARN]</color> {message}", context);
         }
 
         [System.Diagnostics.Conditional("UNITY_EDITOR")]
         public static void Error(string message, Object context = null)
         {
             if (CurrentLogLevel <= LogLevel.Error)
-                DebugLog.Error($"<color=red>[ERROR]</color> {message}", context);
+                Debug.LogError($"<color=red>[ERROR]</color> {message}", context);
         }
     }
 }

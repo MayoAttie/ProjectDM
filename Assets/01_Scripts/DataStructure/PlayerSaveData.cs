@@ -13,6 +13,7 @@ public class PlayerSaveData : BaseDataScript
     public QuestData Quests;
     public SystemUnlockData Unlocks;
     public InventoryData Inventory;
+    public InputSettingsData InputSettings;
     public float TotalPlayTime;
     public int SaveVersion = 1;
 }
@@ -20,54 +21,60 @@ public class PlayerSaveData : BaseDataScript
 [Serializable]
 public class PlayerStatsData : BaseDataScript
 {
-    public long MaxHP;             // ÃÖ´ë Ã¼·Â
-    public long CurrentHP;         // ÇöÀç Ã¼·Â
-    public int Level;              // ÇöÀç ·¹º§
-    public int NextLevelEXP;       // ´ÙÀ½ ·¹º§¾÷±îÁö ÇÊ¿äÇÑ °æÇèÄ¡
-    public int CurrentEXP;         // ÇöÀç º¸À¯ÇÑ °æÇèÄ¡
-    public int AttackPower;        // °ø°İ·Â
-    public int DefensePower;       // ¹æ¾î·Â
+    public long MaxHP;             // ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½
+    public long CurrentHP;         // ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½
+    public int Level;              // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public int NextLevelEXP;       // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡
+    public int CurrentEXP;         // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡
+    public int AttackPower;        // ï¿½ï¿½ï¿½İ·ï¿½
+    public int DefensePower;       // ï¿½ï¿½ï¿½ï¿½
 }
 
 [Serializable]
 public class WorldProgressData : BaseDataScript
 {
-    public E_SceneType CurrentScene;                 // ÇöÀç À§Ä¡ÇÑ ¾À ÀÌ¸§
-    public Vector2 PlayerPosition;              // ÇÃ·¹ÀÌ¾î ÇöÀç ÁÂÇ¥
-    public List<string> VisitedRooms = new();   // ¹æ¹®ÇÑ ¹æ/±¸¿ª ID ¸ñ·Ï
-    public string LastCheckpointId;             // ¸¶Áö¸·À¸·Î µµ´ŞÇÑ Ã¼Å©Æ÷ÀÎÆ® ID
-    public Dictionary<string, bool> EventFlags = new(); // ½ºÅä¸®/¿¬Ãâ/±â¹Í Á¶°Ç ÇÃ·¡±×
+    public E_SceneType CurrentScene;                 // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½
+    public Vector2 PlayerPosition;              // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥
+    public List<string> VisitedRooms = new();   // ï¿½æ¹®ï¿½ï¿½ ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ID ï¿½ï¿½ï¿½
+    public string LastCheckpointId;             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ï¿½ï¿½Æ® ID
+    public Dictionary<string, bool> EventFlags = new(); // ï¿½ï¿½ï¿½ä¸®/ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
 
 }
 
 [Serializable]
 public class StoryData : BaseDataScript
 {
-    public List<string> CompletedStoryEvents = new(); // ¿Ï·áÇÑ ÄÆ¾À/½ºÅä¸® ÀÌº¥Æ® ID ¸ñ·Ï
+    public List<string> CompletedStoryEvents = new(); // ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Æ¾ï¿½/ï¿½ï¿½ï¿½ä¸® ï¿½Ìºï¿½Æ® ID ï¿½ï¿½ï¿½
 
 }
 
 [Serializable]
 public class QuestData : BaseDataScript
 {
-    public List<string> ActiveQuests = new();     // ÁøÇà ÁßÀÎ Äù½ºÆ® ID ¸ñ·Ï
-    public List<string> CompletedQuests = new();  // ¿Ï·áÇÑ Äù½ºÆ® ID ¸ñ·Ï
+    public List<string> ActiveQuests = new();     // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ID ï¿½ï¿½ï¿½
+    public List<string> CompletedQuests = new();  // ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ID ï¿½ï¿½ï¿½
 
 }
 
 [Serializable]
 public class SystemUnlockData : BaseDataScript
 {
-    public List<string> OpenedDoors = new();       // ¿­¾îº» ¹® ID ¸ñ·Ï
-    public List<string> OpenedShortcuts = new();   // ÇØ±İÇÑ ¼ôÄÆ ID ¸ñ·Ï
-    public List<string> UnlockedAbilities = new(); // ÇØ±İÇÑ ´É·Â (ex. ÀÌ´ÜÁ¡ÇÁ, ´ë½Ã)
+    public List<string> OpenedDoors = new();       // ï¿½ï¿½ï¿½îº» ï¿½ï¿½ ID ï¿½ï¿½ï¿½
+    public List<string> OpenedShortcuts = new();   // ï¿½Ø±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ID ï¿½ï¿½ï¿½
+    public List<string> UnlockedAbilities = new(); // ï¿½Ø±ï¿½ï¿½ï¿½ ï¿½É·ï¿½ (ex. ï¿½Ì´ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½)
 
 }
 
 [Serializable]
 public class InventoryData : BaseDataScript
 {
-    public List<ItemData> ObtainedItems = new();     // È¹µæÇÑ ¾ÆÀÌÅÛ ID ¸ñ·Ï
-    public List<ItemData> EquippedItems = new();     // ÀåÂø ÁßÀÎ Àåºñ ID ¸ñ·Ï
+    public List<ItemData> ObtainedItems = new();     // íšë“í•œ ì•„ì´í…œ ID ëª©ë¡
+    public List<ItemData> EquippedItems = new();     // ì¥ì°© ì¤‘ì¸ ì•„ì´í…œ ID ëª©ë¡
 
+}
+
+[Serializable]
+public class InputSettingsData : BaseDataScript
+{
+    public Dictionary<string, string> KeyBindings = new(); // InputType.ToString() -> KeyCode.ToString()
 }

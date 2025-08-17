@@ -77,6 +77,7 @@
     <Compile Include="Assets\01_Scripts\Pool\IPoolExtras.cs" />
     <Compile Include="Assets\01_Scripts\System\InputManager.cs" />
     <Compile Include="Assets\01_Scripts\Global\Patterns\UseSington\GameData.cs" />
+    <Compile Include="Assets\01_Scripts\System\InputManagerTest.cs" />
     <Compile Include="Assets\01_Scripts\Global\Definitions\ESceneType.cs" />
     <Compile Include="Assets\01_Scripts\Global\SceneLoadManager.cs" />
     <Compile Include="Assets\01_Scripts\Global\Patterns\MonoSingleton.cs" />
