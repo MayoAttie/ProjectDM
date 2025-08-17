@@ -26362,7 +26362,7 @@ void Frag(  VertexToPixel v2f
 
 #define DEBUG_DISPLAY
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Debug/DebugDisplay.hlsl"
-#include "Packages/com.unity.render-pipelines.high-definition/Runtime/Debug/FullScreenDebug.hlsl"
+#include "Packages/com.unity.render-pipelines.high-definition/Runtime/Debug/FullScreenDebugLog.hlsl"
 
          #if !defined(_DEPTHOFFSET_ON)
          [earlydepthstencil] // quad overshading debug mode writes to UAV

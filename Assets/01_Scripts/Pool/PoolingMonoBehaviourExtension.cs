@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Project.Utility;
 public class PoolingMonoBehaviourExtension<T> : MonoBehaviourExtension, IPool<T>, IPoolExtras where T : Component, IPoolable
 {
     private readonly Stack<T> pool = new ();
@@ -27,7 +28,7 @@ public class PoolingMonoBehaviourExtension<T> : MonoBehaviourExtension, IPool<T>
     {
         if (item == null)
         {
-            Debug.LogWarning("Attempted to return a null item to the pool.");
+            DebugLog.Warning("Attempted to return a null item to the pool.");
             return;
         }
         item.OnReturnToPool();

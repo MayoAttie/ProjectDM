@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Project.Utility;
 using UnityEngine;
 
 public class GameData : MonoSingleton<GameData> 
@@ -13,30 +14,31 @@ public class GameData : MonoSingleton<GameData>
 
     public async UniTask InitializeAsync()
     {
-        // IO°¡ µé¾î°¥ ¼ö ÀÖÀ¸´Ï ³ªÁß¿¡ async È®Àå °¡´É
+        // IOê°€ ë“¤ì–´ê°ˆ ìˆ˜ ìˆìœ¼ë‹ˆ ë‚˜ì¤‘ì— async í™•ì¥ ê°€ëŠ¥
         var loaded = SaveSystem.Load();
         if (loaded != null)
         {
             SaveData = loaded;
-            Debug.Log("[GameData] ÀúÀå µ¥ÀÌÅÍ¸¦ ºÒ·¯¿Ô½À´Ï´Ù.");
+
+            DebugLog.Log("[GameData] ì €ì¥ ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì™”ìŠµë‹ˆë‹¤.");
         }
         else
         {
             SaveData = CreateNewSaveData();
-            Debug.Log("[GameData] »õ·Î¿î ÀúÀå µ¥ÀÌÅÍ¸¦ »ı¼ºÇß½À´Ï´Ù.");
+            DebugLog.Log("[GameData] ìƒˆë¡œìš´ ì €ì¥ ë°ì´í„°ë¥¼ ìƒì„±í–ˆìŠµë‹ˆë‹¤.");
         }
 
-        // ¹öÀü ¸¶ÀÌ±×·¹ÀÌ¼Ç
+        // ë²„ì „ ë§ˆì´ê·¸ë ˆì´ì…˜
         MigrateIfNeeded();
 
-        // Á¤ÀÇ ¸ÅÇÎ (¾ÆÀÌÅÛ/´É·Â µî)
+        // ì •ì˜ ë§¤í•‘ (ì•„ì´í…œ/ëŠ¥ë ¥ ë“±)
         ResolveDefinitions();
         await UniTask.Yield();
     }
 
 
     /// <summary>
-    /// ÀúÀå µ¥ÀÌÅÍ°¡ ÀÖÀ¸¸é ºÒ·¯¿À°í, ¾øÀ¸¸é »õ·Î »ı¼º
+    /// ì €ì¥ ë°ì´í„°ê°€ ìˆìœ¼ë©´ ë¶ˆëŸ¬ì˜¤ê³ , ì—†ìœ¼ë©´ ìƒˆë¡œ ìƒì„±
     /// </summary>
     private void LoadOrInitialize()
     {
@@ -44,24 +46,24 @@ public class GameData : MonoSingleton<GameData>
         if (loaded != null)
         {
             SaveData = loaded;
-            Debug.Log("[GameData] ÀúÀå µ¥ÀÌÅÍ¸¦ ºÒ·¯¿Ô½À´Ï´Ù.");
+            DebugLog.Log("[GameData] ì €ì¥ ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì™”ìŠµë‹ˆë‹¤.");
         }
         else
         {
             SaveData = CreateNewSaveData();
-            Debug.Log("[GameData] »õ·Î¿î ÀúÀå µ¥ÀÌÅÍ¸¦ »ı¼ºÇß½À´Ï´Ù.");
+            DebugLog.Log("[GameData] ìƒˆë¡œìš´ ì €ì¥ ë°ì´í„°ë¥¼ ìƒì„±í–ˆìŠµë‹ˆë‹¤.");
         }
     }
 
     void ResolveDefinitions()
     {
-        // ¿¹: ÀÎº¥Åä¸® ¾ÆÀÌÅÛ Á¤ÀÇ ¸ÅÇÎ
+        // ì˜ˆ: ì¸ë²¤í† ë¦¬ ì•„ì´í…œ ì •ì˜ ë§¤í•‘
         if (SaveData?.Inventory?.ObtainedItems == null) return;
         foreach (var item in SaveData.Inventory.ObtainedItems)
         {
             item.Definition = ItemDatabase.Instance.GetDefinition(item.ItemId);
             if (item.Definition == null)
-                Debug.LogWarning($"[GameData] Á¤ÀÇ ´©¶ô: {item.ItemId}");
+                DebugLog.Warning($"[GameData] ì •ì˜ ëˆ„ë½: {item.ItemId}");
         }
         foreach (var item in SaveData.Inventory.EquippedItems)
         {
@@ -74,13 +76,13 @@ public class GameData : MonoSingleton<GameData>
         const int CURRENT = 1;
         if (SaveData.SaveVersion < CURRENT)
         {
-            // TODO: ¹öÀüº° ¸¶ÀÌ±×·¹ÀÌ¼Ç ·ÎÁ÷
+            // TODO: ë²„ì „ë³„ ë§ˆì´ê·¸ë ˆì´ì…˜ ë¡œì§
             SaveData.SaveVersion = CURRENT;
         }
     }
 
     /// <summary>
-    /// »õ·Î¿î ÀúÀå µ¥ÀÌÅÍ »ı¼º
+    /// ìƒˆë¡œìš´ ì €ì¥ ë°ì´í„° ìƒì„±
     /// </summary>
     public PlayerSaveData CreateNewSaveData()
     {
@@ -113,7 +115,7 @@ public class GameData : MonoSingleton<GameData>
     }
 
     /// <summary>
-    /// ÀúÀå ¼öÇà
+    /// ì €ì¥ ìˆ˜í–‰
     /// </summary>
     public void Save()
     {
@@ -121,7 +123,7 @@ public class GameData : MonoSingleton<GameData>
     }
 
     /// <summary>
-    /// ÀúÀå µ¥ÀÌÅÍ µ¤¾î¾²±â
+    /// ì €ì¥ ë°ì´í„° ë®ì–´ì“°ê¸°
     /// </summary>
     public void LoadFromSave(PlayerSaveData data)
     {

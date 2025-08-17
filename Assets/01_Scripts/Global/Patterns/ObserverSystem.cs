@@ -1,14 +1,15 @@
+using Project.Utility;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Á¤Àû ÀÌº¥Æ® ¸Å´ÏÀú
+// ì •ì  ì´ë²¤íŠ¸ ë§¤ë‹ˆì €
 public static class ObserverSystem
 {
     private static Dictionary<System.Type, HashSet<IObserverSubscribe>> eventListeners
         = new Dictionary<System.Type, HashSet<IObserverSubscribe>>();
 
-    // Æ¯Á¤ Å¸ÀÔÀÇ ÀÌº¥Æ®¿¡ ±¸µ¶
+    // íŠ¹ì • íƒ€ì…ì˜ ì´ë²¤íŠ¸ì— êµ¬ë…
     public static void Subscribe<T>(IObserverSubscribe observer) where T : IObservable
     {
         System.Type eventType = typeof(T);
@@ -19,11 +20,11 @@ public static class ObserverSystem
         eventListeners[eventType].Add(observer);
 
 #if UNITY_EDITOR
-        Debug.Log($"Observer subscribed to {eventType.Name}. Total listeners: {eventListeners[eventType].Count}");
+        DebugLog.Log($"Observer subscribed to {eventType.Name}. Total listeners: {eventListeners[eventType].Count}");
 #endif
     }
 
-    // Æ¯Á¤ Å¸ÀÔÀÇ ÀÌº¥Æ®¿¡¼­ ±¸µ¶ ÇØÁ¦
+    // íŠ¹ì • íƒ€ì…ì˜ ì´ë²¤íŠ¸ì—ì„œ êµ¬ë… í•´ì œ
     public static void Unsubscribe<T>(IObserverSubscribe observer) where T : IObservable
     {
         System.Type eventType = typeof(T);
@@ -32,17 +33,17 @@ public static class ObserverSystem
         {
             eventListeners[eventType].Remove(observer);
 
-            // ¸®½º³Ê°¡ ¾øÀ¸¸é µñ¼Å³Ê¸®¿¡¼­ Á¦°Å
+            // ë¦¬ìŠ¤ë„ˆê°€ ì—†ìœ¼ë©´ ë”•ì…”ë„ˆë¦¬ì—ì„œ ì œê±°
             if (eventListeners[eventType].Count == 0)
                 eventListeners.Remove(eventType);
 
 #if UNITY_EDITOR
-            Debug.Log($"Observer unsubscribed from {eventType.Name}");
+            DebugLog.Log($"Observer unsubscribed from {eventType.Name}");
 #endif
         }
     }
 
-    // ¸ğµç ÀÌº¥Æ®¿¡¼­ ±¸µ¶ ÇØÁ¦ (MonoBehaviour°¡ ÆÄ±«µÉ ¶§ À¯¿ë)
+    // ëª¨ë“  ì´ë²¤íŠ¸ì—ì„œ êµ¬ë… í•´ì œ (MonoBehaviourê°€ íŒŒê´´ë  ë•Œ ìœ ìš©)
     public static void UnsubscribeAll(IObserverSubscribe observer)
     {
         var keysToRemove = new List<System.Type>();
@@ -54,14 +55,14 @@ public static class ObserverSystem
                 keysToRemove.Add(kvp.Key);
         }
 
-        // ºó ¸®½º³Ê µñ¼Å³Ê¸® Á¦°Å
+        // ë¹ˆ ë¦¬ìŠ¤ë„ˆ ë”•ì…”ë„ˆë¦¬ ì œê±°
         foreach (var key in keysToRemove)
         {
             eventListeners.Remove(key);
         }
     }
 
-    // ÀÌº¥Æ® ¹ß»ı
+    // ì´ë²¤íŠ¸ ë°œìƒ
     public static void Notify<T>(T observable, object data = null) where T : IObservable
     {
         System.Type eventType = typeof(T);
@@ -69,14 +70,14 @@ public static class ObserverSystem
         if (!eventListeners.ContainsKey(eventType))
             return;
 
-        // ¸®½º³Ê º¹»çº» »ı¼º (iteration Áß ¼öÁ¤ ¹æÁö)
+        // ë¦¬ìŠ¤ë„ˆ ë³µì‚¬ë³¸ ìƒì„± (iteration ì¤‘ ìˆ˜ì • ë°©ì§€)
         var listeners = new HashSet<IObserverSubscribe>(eventListeners[eventType]);
 
         foreach (var listener in listeners)
         {
             try
             {
-                // Unity Object°¡ ÆÄ±«µÇ¾ú´ÂÁö È®ÀÎ
+                // Unity Objectê°€ íŒŒê´´ë˜ì—ˆëŠ”ì§€ í™•ì¸
                 if (listener is MonoBehaviour mb && mb == null)
                 {
                     eventListeners[eventType].Remove(listener);
@@ -87,27 +88,27 @@ public static class ObserverSystem
             }
             catch (Exception e)
             {
-                Debug.LogError($"Error notifying observer for {eventType.Name}: {e.Message}");
+                DebugLog.Error($"Error notifying observer for {eventType.Name}: {e.Message}");
             }
         }
     }
 
-    // µğ¹ö±ë¿ë: ÇöÀç µî·ÏµÈ ¸®½º³Ê ¼ö Ãâ·Â
+    // ë””ë²„ê¹…ìš©: í˜„ì¬ ë“±ë¡ëœ ë¦¬ìŠ¤ë„ˆ ìˆ˜ ì¶œë ¥
     public static void LogListenerCounts()
     {
 #if UNITY_EDITOR
-        Debug.Log("=== Event Manager Status ===");
+        DebugLog.Log("=== Event Manager Status ===");
         foreach (var kvp in eventListeners)
         {
-            Debug.Log($"{kvp.Key.Name}: {kvp.Value.Count} listeners");
+            DebugLog.Log($"{kvp.Key.Name}: {kvp.Value.Count} listeners");
         }
 #endif
     }
 
-    // ¸Ş¸ğ¸® Á¤¸® (¾À ÀüÈ¯ ½Ã È£ÃâÇÏ¸é ÁÁÀ½)
+    // ë©”ëª¨ë¦¬ ì •ë¦¬ (ì”¬ ì „í™˜ ì‹œ í˜¸ì¶œí•˜ë©´ ì¢‹ìŒ)
     public static void Clear()
     {
         eventListeners.Clear();
-        Debug.Log("EventManager cleared all listeners");
+        DebugLog.Log("EventManager cleared all listeners");
     }
 }

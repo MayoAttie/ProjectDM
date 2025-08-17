@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
+using Project.Utility;
 
 public static class SaveSystem
 {
@@ -15,11 +16,11 @@ public static class SaveSystem
         {
             string json = JsonConvert.SerializeObject(data, Formatting.Indented);
             File.WriteAllText(SavePath, json);
-            Debug.Log($"[SaveSystem] ÀúÀå ¿Ï·á: {SavePath}");
+            DebugLog.Log($"[SaveSystem] ì €ì¥ ì™„ë£Œ: {SavePath}");
         }
         catch (Exception e)
         {
-            Debug.LogError($"[SaveSystem] ÀúÀå ½ÇÆĞ: {e.Message}");
+            DebugLog.Error($"[SaveSystem] ì €ì¥ ì‹¤íŒ¨: {e.Message}");
         }
     }
 
@@ -27,7 +28,7 @@ public static class SaveSystem
     {
         if (!File.Exists(SavePath))
         {
-            Debug.LogWarning("[SaveSystem] ÀúÀå ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ½.");
+            DebugLog.Warning("[SaveSystem] ì €ì¥ íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŒ.");
             return null;
         }
 
@@ -38,7 +39,7 @@ public static class SaveSystem
         }
         catch (Exception e)
         {
-            Debug.LogError($"[SaveSystem] ·Îµå ½ÇÆĞ: {e.Message}");
+            DebugLog.Error($"[SaveSystem] ë¡œë“œ ì‹¤íŒ¨: {e.Message}");
             return null;
         }
     }
@@ -48,7 +49,7 @@ public static class SaveSystem
         if (File.Exists(SavePath))
         {
             File.Delete(SavePath);
-            Debug.Log("[SaveSystem] ÀúÀå ÆÄÀÏ »èÁ¦µÊ");
+            DebugLog.Log("[SaveSystem] ì €ì¥ íŒŒì¼ ì‚­ì œë¨");
         }
     }
 }

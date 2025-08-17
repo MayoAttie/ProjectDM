@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{27E04ABD-4DD0-D770-258C-D19780FE778E}</ProjectGuid>
+    <ProjectGuid>{E63C03D9-F83D-0472-DE4F-D3776AD14DF0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -61,23 +61,33 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.53f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\01_Scripts\Global\Patterns\IObservable.cs" />
     <Compile Include="Assets\01_Scripts\Global\Patterns\DataSingleton.cs" />
     <Compile Include="Assets\01_Scripts\DataStructure\ItemData.cs" />
+    <Compile Include="Assets\01_Scripts\Global\Patterns\ObserverSystem.cs" />
     <Compile Include="Assets\01_Scripts\Pool\PoolingManager.cs" />
     <Compile Include="Assets\01_Scripts\DataStructure\BaseDataScript.cs" />
     <Compile Include="Assets\01_Scripts\Pool\IPoolable.cs" />
     <Compile Include="Assets\01_Scripts\Pool\PoolingMonoBehaviourExtension.cs" />
     <Compile Include="Assets\01_Scripts\Objects\MonoBehaviourExtension.cs" />
     <Compile Include="Assets\01_Scripts\Pool\IPool.cs" />
+    <Compile Include="Assets\01_Scripts\System\Debug.cs" />
     <Compile Include="Assets\01_Scripts\Global\Definitions\EPooledObjectType.cs" />
+    <Compile Include="Assets\01_Scripts\Global\ProjectManager.cs" />
     <Compile Include="Assets\01_Scripts\Pool\IPoolExtras.cs" />
+    <Compile Include="Assets\01_Scripts\System\InputManager.cs" />
     <Compile Include="Assets\01_Scripts\Global\Patterns\UseSington\GameData.cs" />
+    <Compile Include="Assets\01_Scripts\Global\Definitions\ESceneType.cs" />
+    <Compile Include="Assets\01_Scripts\Global\SceneLoadManager.cs" />
     <Compile Include="Assets\01_Scripts\Global\Patterns\MonoSingleton.cs" />
     <Compile Include="Assets\01_Scripts\Global\SaveSystem.cs" />
     <Compile Include="Assets\01_Scripts\DataStructure\PlayerSaveData.cs" />
     <Compile Include="Assets\01_Scripts\Global\Patterns\IDataSingleton.cs" />
     <Compile Include="Assets\01_Scripts\Pool\PoolingUtil.cs" />
+    <Compile Include="Assets\01_Scripts\Objects\Player\PlayerableCharacterController.cs" />
     <Compile Include="Assets\01_Scripts\DataStructure\ItemDefinition.cs" />
+    <Compile Include="Assets\01_Scripts\Objects\Player\PlayerableCharacterManager.cs" />
+    <Compile Include="Assets\01_Scripts\DataStructure\ItemDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -568,12 +578,12 @@
       <HintPath>Assets\Plugins\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@74deb55db2a0\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -1351,8 +1361,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{3C8CD90B-5487-5E38-4F98-FEC07133BF0A}</Project>
+      <Project>{89E64E00-F308-238E-4A80-81F4BB1AF2C7}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="AllIn1SpriteShaderAssembly.csproj">
+      <Project>{5F4400C8-A8DB-EFA3-E579-D4F118AF3330}</Project>
+      <Name>AllIn1SpriteShaderAssembly</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

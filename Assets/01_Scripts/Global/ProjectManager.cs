@@ -17,37 +17,37 @@ public class ProjectManager : MonoSingleton<ProjectManager>
 
     private void AwakeGameSequence()
     {
-        // 1) ÇÊ¼ö ½Ì±ÛÅÏ/µ¥ÀÌÅÍº£ÀÌ½º ÁØºñ
-        _ = ItemDatabase.Instance;     // ¹Ì¸® »ı¼º + DontDestroyOnLoad
-        _ = GameData.Instance;         // ¹Ì¸® »ı¼º¸¸
-        // ÇÊ¿äÇÏ¸é AbilityDatabase/Audio/Localization µîµµ ¿©±â¼­ º¸Àå
+        // 1) í•„ìˆ˜ ì‹±ê¸€í„´/ë°ì´í„°ë² ì´ìŠ¤ ì¤€ë¹„
+        _ = ItemDatabase.Instance;     // ë¯¸ë¦¬ ìƒì„± + DontDestroyOnLoad
+        _ = GameData.Instance;         // ë¯¸ë¦¬ ìƒì„±ë§Œ
+        // í•„ìš”í•˜ë©´ AbilityDatabase/Audio/Localization ë“±ë„ ì—¬ê¸°ì„œ ë³´ì¥
     }
 
     private async UniTask StartGameSequence()
     {
-        // 2) ·Îµù UI ON (¼±ÅÃ)
+        // 2) ë¡œë”© UI ON (ì„ íƒ)
         // UIManager.ShowLoading(true);
 
-        // 3) GameData ÃÊ±âÈ­(·Îµå/»õ·Î »ı¼º) + Á¤ÀÇ ¸ÅÇÎ
+        // 3) GameData ì´ˆê¸°í™”(ë¡œë“œ/ìƒˆë¡œ ìƒì„±) + ì •ì˜ ë§¤í•‘
         await GameData.Instance.InitializeAsync();
 
-        // 4) (¼±ÅÃ) ¾À ÁøÀÔ/ÇÃ·¹ÀÌ¾î ½ºÆù
+        // 4) (ì„ íƒ) ì”¬ ì§„ì…/í”Œë ˆì´ì–´ ìŠ¤í°
         await LoadSavedNowScene();
 
-        // 5) ·Îµù UI OFF
+        // 5) ë¡œë”© UI OFF
         // UIManager.ShowLoading(false);
     }
 
     private async UniTask LoadSavedNowScene()
     {
         var wd = GameData.Instance.SaveData.WorldProgress;
-        // ÇöÀç ¾À°ú ÀúÀå ¾ÀÀÌ ´Ù¸£¸é ·Îµå
+        // í˜„ì¬ ì”¬ê³¼ ì €ì¥ ì”¬ì´ ë‹¤ë¥´ë©´ ë¡œë“œ
         if (SceneLoadManager.Instance.GetCurrentScene() != wd.CurrentScene)
         {
             await SceneLoadManager.Instance.LoadSceneAsync(wd.CurrentScene, LoadSceneMode.Single);
         }
 
-        // TODO : ½ºÆù/À§Ä¡ º¹¿ø
+        // TODO : ìŠ¤í°/ìœ„ì¹˜ ë³µì›
         //PlayerSpawner.SpawnAt(wd.PlayerPosition, wd.LastCheckpointId);
     }
 }

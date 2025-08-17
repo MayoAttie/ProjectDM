@@ -657,7 +657,7 @@
             Must always have at least one element in connectedNodesIds
             </summary>
         </member>
-        <member name="F:DG.DemiEditor.DeGUINodeSystem.Core.DebugSystem.NodeProcessDebug.DataStore._eventData">
+        <member name="F:DG.DemiEditor.DeGUINodeSystem.Core.DebugSystem.NodeProcessDebugLog.DataStore._eventData">
             <summary>Layout, Repaint, LayoutAndRepaint</summary>
         </member>
         <member name="T:DG.DemiEditor.DeGUINodeSystem.Core.NodesClipboard">

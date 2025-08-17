@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Project.Utility;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -7,19 +8,19 @@ using UnityEngine.SceneManagement;
 using static ESceneType;
 
 /// <summary>
-/// ¾À ·Îµù°ú ¾ğ·ÎµùÀ» °ü¸®ÇÏ´Â Àü¿ª ¸Å´ÏÀú
-/// - E_SceneType <-> ¾À ÀÌ¸§ °£ ¸ÅÇÎ Á¦°ø
-/// - UniTask ±â¹İ ºñµ¿±â ·Îµå/¾ğ·Îµå Áö¿ø
-/// - ÁøÇà·ü ¹× Ãë¼Ò ÅäÅ« Áö¿ø
+/// ì”¬ ë¡œë”©ê³¼ ì–¸ë¡œë”©ì„ ê´€ë¦¬í•˜ëŠ” ì „ì—­ ë§¤ë‹ˆì €
+/// - E_SceneType <-> ì”¬ ì´ë¦„ ê°„ ë§¤í•‘ ì œê³µ
+/// - UniTask ê¸°ë°˜ ë¹„ë™ê¸° ë¡œë“œ/ì–¸ë¡œë“œ ì§€ì›
+/// - ì§„í–‰ë¥  ë° ì·¨ì†Œ í† í° ì§€ì›
 /// </summary>
 public class SceneLoadManager : MonoSingleton<SceneLoadManager>
 {
     // ------------------------------
-    //  ¸ÅÇÎ Å×ÀÌºí
+    //  ë§¤í•‘ í…Œì´ë¸”
     // ------------------------------
 
     /// <summary>
-    /// ¾À Å¸ÀÔ ¡æ ¾À ÀÌ¸§ ¸ÅÇÎ (ºôµå ¼¼ÆÃ¿¡ µî·ÏµÈ ÀÌ¸§)
+    /// ì”¬ íƒ€ì… â†’ ì”¬ ì´ë¦„ ë§¤í•‘ (ë¹Œë“œ ì„¸íŒ…ì— ë“±ë¡ëœ ì´ë¦„)
     /// </summary>
     private static readonly Dictionary<E_SceneType, string> _typeToName = new()
     {
@@ -29,7 +30,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     };
 
     /// <summary>
-    /// ¾À ÀÌ¸§ ¡æ ¾À Å¸ÀÔ ¸ÅÇÎ
+    /// ì”¬ ì´ë¦„ â†’ ì”¬ íƒ€ì… ë§¤í•‘
     /// </summary>
     private static readonly Dictionary<string, E_SceneType> _nameToType = new(StringComparer.Ordinal)
     {
@@ -39,32 +40,33 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     };
 
     // ------------------------------
-    //  ÇöÀç ¾À Á¤º¸
+    //  í˜„ì¬ ì”¬ ì •ë³´
     // ------------------------------
 
     /// <summary>
-    /// ÇöÀç È°¼º ¾ÀÀÇ E_SceneType ¹İÈ¯
+    /// í˜„ì¬ í™œì„± ì”¬ì˜ E_SceneType ë°˜í™˜
     /// </summary>
     public E_SceneType GetCurrentScene()
     {
         var name = SceneManager.GetActiveScene().name;
         if (_nameToType.TryGetValue(name, out var t)) return t;
 
-        Debug.LogError($"[SceneLoadManager] Unknown scene type for: {name}");
+        
+        DebugLog.Error($"[SceneLoadManager] Unknown scene type for: {name}");
         return E_SceneType.NONE;
     }
 
     // ------------------------------
-    //  ¾À ·Îµå (E_SceneType ¹öÀü)
+    //  ì”¬ ë¡œë“œ (E_SceneType ë²„ì „)
     // ------------------------------
 
     /// <summary>
-    /// E_SceneType ±âÁØÀ¸·Î ¾À ·Îµå
+    /// E_SceneType ê¸°ì¤€ìœ¼ë¡œ ì”¬ ë¡œë“œ
     /// </summary>
-    /// <param name="sceneType">·ÎµåÇÒ ¾À Å¸ÀÔ</param>
-    /// <param name="mode">·Îµå ¸ğµå (Single / Additive)</param>
-    /// <param name="progress">ÁøÇà·ü Äİ¹é</param>
-    /// <param name="ct">Ãë¼Ò ÅäÅ«</param>
+    /// <param name="sceneType">ë¡œë“œí•  ì”¬ íƒ€ì…</param>
+    /// <param name="mode">ë¡œë“œ ëª¨ë“œ (Single / Additive)</param>
+    /// <param name="progress">ì§„í–‰ë¥  ì½œë°±</param>
+    /// <param name="ct">ì·¨ì†Œ í† í°</param>
     public async UniTask LoadSceneAsync(
         E_SceneType sceneType,
         LoadSceneMode mode = LoadSceneMode.Single,
@@ -76,42 +78,42 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     }
 
     // ------------------------------
-    //  ¾À ·Îµå (string ¹öÀü)
+    //  ì”¬ ë¡œë“œ (string ë²„ì „)
     // ------------------------------
 
     /// <summary>
-    /// ¾À ÀÌ¸§ ±âÁØÀ¸·Î ¾À ·Îµå
+    /// ì”¬ ì´ë¦„ ê¸°ì¤€ìœ¼ë¡œ ì”¬ ë¡œë“œ
     /// </summary>
-    /// <param name="sceneName">·ÎµåÇÒ ¾À ÀÌ¸§ (ºôµå ¼¼ÆÃ µî·Ï ÇÊ¼ö)</param>
-    /// <param name="mode">·Îµå ¸ğµå (Single / Additive)</param>
-    /// <param name="progress">ÁøÇà·ü Äİ¹é</param>
-    /// <param name="ct">Ãë¼Ò ÅäÅ«</param>
-    /// <exception cref="ArgumentException">sceneNameÀÌ null/emptyÀÏ °æ¿ì</exception>
-    /// <exception cref="InvalidOperationException">¾ÀÀÌ ºôµå ¼¼ÆÃ¿¡ ¾øÀ» °æ¿ì</exception>
+    /// <param name="sceneName">ë¡œë“œí•  ì”¬ ì´ë¦„ (ë¹Œë“œ ì„¸íŒ… ë“±ë¡ í•„ìˆ˜)</param>
+    /// <param name="mode">ë¡œë“œ ëª¨ë“œ (Single / Additive)</param>
+    /// <param name="progress">ì§„í–‰ë¥  ì½œë°±</param>
+    /// <param name="ct">ì·¨ì†Œ í† í°</param>
+    /// <exception cref="ArgumentException">sceneNameì´ null/emptyì¼ ê²½ìš°</exception>
+    /// <exception cref="InvalidOperationException">ì”¬ì´ ë¹Œë“œ ì„¸íŒ…ì— ì—†ì„ ê²½ìš°</exception>
     public async UniTask LoadSceneAsync(
         string sceneName,
         LoadSceneMode mode = LoadSceneMode.Single,
         IProgress<float> progress = null,
         CancellationToken ct = default)
     {
-        // À¯È¿¼º °Ë»ç
+        // ìœ íš¨ì„± ê²€ì‚¬
         if (string.IsNullOrEmpty(sceneName))
             throw new ArgumentException("sceneName is null or empty.");
 
         if (!Application.CanStreamedLevelBeLoaded(sceneName))
             throw new InvalidOperationException($"Scene not in Build Settings: {sceneName}");
 
-        // ¾À ·Îµå ½ÃÀÛ
+        // ì”¬ ë¡œë“œ ì‹œì‘
         var op = SceneManager.LoadSceneAsync(sceneName, mode);
         op.allowSceneActivation = true;
 
-        // AsyncOperation ¡æ UniTask º¯È¯ + ÁøÇà·ü º¸°í
+        // AsyncOperation â†’ UniTask ë³€í™˜ + ì§„í–‰ë¥  ë³´ê³ 
         await op.ToUniTask(
-            progress: progress,              // 0.0 ~ 0.9 (Unity ±Ô¾à)
+            progress: progress,              // 0.0 ~ 0.9 (Unity ê·œì•½)
             cancellationToken: ct
         );
 
-        // Additive ¸ğµå¸é ·Îµå ÈÄ È°¼º ¾À ÁöÁ¤
+        // Additive ëª¨ë“œë©´ ë¡œë“œ í›„ í™œì„± ì”¬ ì§€ì •
         if (mode == LoadSceneMode.Additive)
         {
             var loaded = SceneManager.GetSceneByName(sceneName);
@@ -119,16 +121,16 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
                 SceneManager.SetActiveScene(loaded);
         }
 
-        // ¾À ³» ¿ÀºêÁ§Æ® Awake/Start ½ÇÇà º¸Àå
+        // ì”¬ ë‚´ ì˜¤ë¸Œì íŠ¸ Awake/Start ì‹¤í–‰ ë³´ì¥
         await UniTask.NextFrame(PlayerLoopTiming.Update, ct);
     }
 
     // ------------------------------
-    //  ¾À ¾ğ·Îµå
+    //  ì”¬ ì–¸ë¡œë“œ
     // ------------------------------
 
     /// <summary>
-    /// ¾À ÀÌ¸§ ±âÁØ ¾ğ·Îµå
+    /// ì”¬ ì´ë¦„ ê¸°ì¤€ ì–¸ë¡œë“œ
     /// </summary>
     public async UniTask UnloadSceneAsync(string sceneName, CancellationToken ct = default)
     {
@@ -140,11 +142,11 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     }
 
     // ------------------------------
-    //  º¯È¯ À¯Æ¿
+    //  ë³€í™˜ ìœ í‹¸
     // ------------------------------
 
     /// <summary>
-    /// ¾À Å¸ÀÔ ¡æ ¾À ÀÌ¸§ º¯È¯
+    /// ì”¬ íƒ€ì… â†’ ì”¬ ì´ë¦„ ë³€í™˜
     /// </summary>
     public string ConvertSceneName(E_SceneType type)
     {
@@ -155,7 +157,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     }
 
     /// <summary>
-    /// ¾À ÀÌ¸§ ¡æ ¾À Å¸ÀÔ º¯È¯
+    /// ì”¬ ì´ë¦„ â†’ ì”¬ íƒ€ì… ë³€í™˜
     /// </summary>
     public E_SceneType ConvertSceneType(string name)
     {

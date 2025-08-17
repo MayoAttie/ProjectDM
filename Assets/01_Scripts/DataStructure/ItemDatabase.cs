@@ -1,3 +1,4 @@
+using Project.Utility;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class ItemDatabase : MonoSingleton<ItemDatabase>
 {
     [SerializeField]
-    private List<ItemDefinition> itemDefinitions; // ÀÎ½ºÆåÅÍ ¼öµ¿ µî·Ï¿ë
+    private List<ItemDefinition> itemDefinitions; // ì¸ìŠ¤í™í„° ìˆ˜ë™ ë“±ë¡ìš©
 
     private Dictionary<string, ItemDefinition> itemMap;
 
@@ -17,10 +18,10 @@ public class ItemDatabase : MonoSingleton<ItemDatabase>
 
     private void LoadDefinitions()
     {
-        // ¼öµ¿ µî·Ï + ÀÚµ¿ ·Îµå È¥ÇÕ °¡´É
+        // ìˆ˜ë™ ë“±ë¡ + ìë™ ë¡œë“œ í˜¼í•© ê°€ëŠ¥
         var loadedFromResources = Resources.LoadAll<ItemDefinition>("Data/Items");
 
-        // Áßº¹ ¹æÁö ¹× º´ÇÕ
+        // ì¤‘ë³µ ë°©ì§€ ë° ë³‘í•©
         var all = new HashSet<ItemDefinition>(itemDefinitions);
         foreach (var def in loadedFromResources)
             all.Add(def);
@@ -28,14 +29,14 @@ public class ItemDatabase : MonoSingleton<ItemDatabase>
         itemDefinitions = all.ToList();
         itemMap = itemDefinitions.ToDictionary(d => d.ItemId, d => d);
 
-        Debug.Log($"[ItemDatabase] {itemMap.Count}°³ ¾ÆÀÌÅÛ Á¤ÀÇ ·Îµå ¿Ï·á");
+        DebugLog.Log($"[ItemDatabase] {itemMap.Count}ê°œ ì•„ì´í…œ ì •ì˜ ë¡œë“œ ì™„ë£Œ");
     }
 
     public ItemDefinition GetDefinition(string itemId)
     {
         if (itemMap.TryGetValue(itemId, out var def))
             return def;
-        Debug.LogWarning($"[ItemDatabase] Á¤ÀÇ¸¦ Ã£À» ¼ö ¾øÀ½: {itemId}");
+        DebugLog.Warning($"[ItemDatabase] ì •ì˜ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ: {itemId}");
         return null;
     }
 

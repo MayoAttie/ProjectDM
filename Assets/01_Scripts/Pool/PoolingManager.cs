@@ -1,3 +1,4 @@
+using Project.Utility;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +8,10 @@ public class PoolingManager : MonoSingleton<PoolingManager>
 
 
     /// <summary>
-    /// Ç®À» µî·ÏÇÑ´Ù. EPooledObjectTypeÀ» Å°·Î prefabÀ» ±â¹İÀ¸·Î ÇÑ Ç®À» »ı¼ºÇÑ´Ù.
+    /// í’€ì„ ë“±ë¡í•œë‹¤. EPooledObjectTypeì„ í‚¤ë¡œ prefabì„ ê¸°ë°˜ìœ¼ë¡œ í•œ í’€ì„ ìƒì„±í•œë‹¤.
     /// </summary>
-    /// <param name="type">µî·ÏÇÒ Ç® Å¸ÀÔ(enum)</param>
-    /// <param name="prefab">Ç®¸µÇÒ ÇÁ¸®ÆÕ(MonoBehaviour, IPoolable)</param>
+    /// <param name="type">ë“±ë¡í•  í’€ íƒ€ì…(enum)</param>
+    /// <param name="prefab">í’€ë§í•  í”„ë¦¬íŒ¹(MonoBehaviour, IPoolable)</param>
     public void Register(EPooledObjectType type, MonoBehaviourExtension prefab)
     {
         if (_pools.ContainsKey(type)) 
@@ -28,12 +29,12 @@ public class PoolingManager : MonoSingleton<PoolingManager>
 
 
     /// <summary>
-    /// Á¦³×¸¯ Å¸ÀÔ ±â¹İ Ç® »ı¼º. PoolingMonoBehaviourExtension<T>¸¦ »ı¼ºÇÏ°í ÃÊ±âÈ­.
+    /// ì œë„¤ë¦­ íƒ€ì… ê¸°ë°˜ í’€ ìƒì„±. PoolingMonoBehaviourExtension<T>ë¥¼ ìƒì„±í•˜ê³  ì´ˆê¸°í™”.
     /// </summary>
-    /// <typeparam name="T">Ç®¸µÇÒ °´Ã¼ Å¸ÀÔ</typeparam>
-    /// <param name="prefab">ÇÁ¸®ÆÕ</param>
-    /// <param name="parent">ºÎ¸ğ Æ®·£½ºÆû</param>
-    /// <returns>»ı¼ºµÈ Ç®</returns>
+    /// <typeparam name="T">í’€ë§í•  ê°ì²´ íƒ€ì…</typeparam>
+    /// <param name="prefab">í”„ë¦¬íŒ¹</param>
+    /// <param name="parent">ë¶€ëª¨ íŠ¸ëœìŠ¤í¼</param>
+    /// <returns>ìƒì„±ëœ í’€</returns>
     private IPool<MonoBehaviourExtension> CreatePool<T>(T prefab, Transform parent) where T : MonoBehaviourExtension, IPoolable
     {
         var pool = parent.gameObject.AddComponent<PoolingMonoBehaviourExtension<T>>();
@@ -42,37 +43,37 @@ public class PoolingManager : MonoSingleton<PoolingManager>
     }
 
     /// <summary>
-    /// Æ¯Á¤ Å¸ÀÔÀÇ Ç®¿¡¼­ °´Ã¼¸¦ ²¨³»¿Â´Ù.
+    /// íŠ¹ì • íƒ€ì…ì˜ í’€ì—ì„œ ê°ì²´ë¥¼ êº¼ë‚´ì˜¨ë‹¤.
     /// </summary>
-    /// <typeparam name="T">°´Ã¼ Å¸ÀÔ</typeparam>
-    /// <param name="type">Ç® Å¸ÀÔ</param>
+    /// <typeparam name="T">ê°ì²´ íƒ€ì…</typeparam>
+    /// <param name="type">í’€ íƒ€ì…</param>
     public T Get<T>(EPooledObjectType type) where T : MonoBehaviourExtension, IPoolable
     {
         if (_pools.TryGetValue(type, out var pool))
             return pool.Get() as T;
 
-        Debug.LogError($"No pool registered for type {type}");
+        DebugLog.Error($"No pool registered for type {type}");
         return null;
     }
 
     /// <summary>
-    /// Æ¯Á¤ Å¸ÀÔÀÇ Ç®¿¡ °´Ã¼¸¦ ¹İÈ¯ÇÑ´Ù.
+    /// íŠ¹ì • íƒ€ì…ì˜ í’€ì— ê°ì²´ë¥¼ ë°˜í™˜í•œë‹¤.
     /// </summary>
-    /// <typeparam name="T">°´Ã¼ Å¸ÀÔ</typeparam>
-    /// <param name="type">Ç® Å¸ÀÔ</param>
-    /// <param name="obj">¹İÈ¯ÇÒ °´Ã¼</param>
+    /// <typeparam name="T">ê°ì²´ íƒ€ì…</typeparam>
+    /// <param name="type">í’€ íƒ€ì…</param>
+    /// <param name="obj">ë°˜í™˜í•  ê°ì²´</param>
     public void Return<T>(EPooledObjectType type, T obj) where T : MonoBehaviourExtension, IPoolable
     {
         if (_pools.TryGetValue(type, out var pool))
             pool.Return(obj);
         else
-            Debug.LogError($"No pool registered for type {type}");
+            DebugLog.Error($"No pool registered for type {type}");
     }
 
     /// <summary>
-    /// Æ¯Á¤ Å¸ÀÔÀÇ Ç®¿¡ °´Ã¼°¡ µî·ÏµÇ¾î ÀÖ´ÂÁö È®ÀÎÇÑ´Ù.
+    /// íŠ¹ì • íƒ€ì…ì˜ í’€ì— ê°ì²´ê°€ ë“±ë¡ë˜ì–´ ìˆëŠ”ì§€ í™•ì¸í•œë‹¤.
     /// </summary>
-    /// <param name="type">°´Ã¼ Å¸ÀÔ</param>
+    /// <param name="type">ê°ì²´ íƒ€ì…</param>
     /// <returns></returns>
     public bool IsRegistered(EPooledObjectType type)
     {
@@ -80,10 +81,10 @@ public class PoolingManager : MonoSingleton<PoolingManager>
     }
 
     /// <summary>
-    /// ¹Ì¸® °´Ã¼µéÀ» »ı¼ºÇØ Ç®¿¡ ³Ö¾îµÎ´Â ¸Ş¼­µå
+    /// ë¯¸ë¦¬ ê°ì²´ë“¤ì„ ìƒì„±í•´ í’€ì— ë„£ì–´ë‘ëŠ” ë©”ì„œë“œ
     /// </summary>
-    /// <param name="type">°´Ã¼ Å¸ÀÔ</param>
-    /// <param name="count">»ı¼ºÇÒ °¹¼ö</param>
+    /// <param name="type">ê°ì²´ íƒ€ì…</param>
+    /// <param name="count">ìƒì„±í•  ê°¯ìˆ˜</param>
     public void Preload(EPooledObjectType type, int count)
     {
         if (_pools.TryGetValue(type, out var pool))
@@ -97,7 +98,7 @@ public class PoolingManager : MonoSingleton<PoolingManager>
     }
 
     /// <summary>
-    /// ¸ğµç Ç®¿¡ ÀÖ´Â °´Ã¼µéÀ» ¹İÈ¯ÇÑ´Ù. IPoolExtras¸¦ ±¸ÇöÇÑ Ç®¿¡¼­¸¸ µ¿ÀÛÇÑ´Ù.
+    /// ëª¨ë“  í’€ì— ìˆëŠ” ê°ì²´ë“¤ì„ ë°˜í™˜í•œë‹¤. IPoolExtrasë¥¼ êµ¬í˜„í•œ í’€ì—ì„œë§Œ ë™ì‘í•œë‹¤.
     /// </summary>
     public void ReturnAll()
     {
@@ -111,9 +112,9 @@ public class PoolingManager : MonoSingleton<PoolingManager>
     }
 
     /// <summary>
-    /// Æ¯Á¤ Å¸ÀÔÀÇ Ç®À» ºñ¿î´Ù. IPoolExtras¸¦ ±¸ÇöÇÑ Ç®¿¡¼­¸¸ µ¿ÀÛÇÑ´Ù.
+    /// íŠ¹ì • íƒ€ì…ì˜ í’€ì„ ë¹„ìš´ë‹¤. IPoolExtrasë¥¼ êµ¬í˜„í•œ í’€ì—ì„œë§Œ ë™ì‘í•œë‹¤.
     /// </summary>
-    /// <param name="type">°´Ã¼ Å¸ÀÔ</param>
+    /// <param name="type">ê°ì²´ íƒ€ì…</param>
     public void Clear(EPooledObjectType type)
     {
         if (_pools.TryGetValue(type, out var pool) && pool is IPoolExtras extras)
