@@ -1469,13 +1469,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{3C8CD90B-5487-5E38-4F98-FEC07133BF0A}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
     <ProjectReference Include="AllIn1SpriteShaderAssembly.csproj">
       <Project>{4CCC66B9-9A0E-BEAB-58E2-4927FEBBB062}</Project>
       <Name>AllIn1SpriteShaderAssembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="DOTween.Modules.csproj">
+      <Project>{E1AFA0F7-275D-A104-1DFE-CE7000A7A3E6}</Project>
+      <Name>DOTween.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="DOTweenPro.Scripts.csproj">
+      <Project>{60C65478-6D47-A784-A375-AD121DAE2C71}</Project>
+      <Name>DOTweenPro.Scripts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

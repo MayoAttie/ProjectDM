@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -36,7 +36,7 @@ namespace AllIn1SpriteShader
             if (!updateEveryFrame && Application.isPlaying && this != null) this.enabled = false;
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (updateEveryFrame)
             {
